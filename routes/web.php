@@ -51,7 +51,7 @@ Route::get('/', function () {
 
 
 Route::get('/mahasiswa', function () {
-    $data_mhs = ["Abdul","Adha","Aidil","Alif","Asfal"];
+    $data_mhs = ["Penti","Kania","Putri","Pece","Dini"];
     return view('layout.mahasiswa',compact('data_mhs'));
 });
 
