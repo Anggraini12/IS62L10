@@ -17,34 +17,34 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/mahasiswa">Mahasiswa</a>
+                    <a class="nav-link active" aria-current="page" href="/mahasiswa">Mahasiswa</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="/dosen">Dosen</a>
+                    <a class="nav-link" href="/dosen">Dosen</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/galeri">Galeri</a>
                 </li>
 
                 </ul>
-                {{-- <form class="d-flex" role="search">
+                <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
-                </form> --}}
+                </form>
             </div>
         </div>
     </nav>
 
     <div class="container text-center mt-3 bg-white">
-        <h2 class="mb-3">Data Dosen</h2>
+        <h2 class="mb-3">Data mahasiswa</h2>
         <div class="row">
             <div class="m-auto col-6">
                 <ol class="list-group">
-                    @forelse ($data_dos as $dosen)
-                        <li class="list-group-item">{{$dosen}}</li>
+                    @forelse ($data_mhs as $mhs)
+                        <li class="list-group-item">{{$mhs}}</li>
                     @empty
                     <div class="alert alert-secondary" role="alert">
-                        Maaf, Data Dosen Tidak Tersedia
+                        Maaf, Data Mahasiswa Tidak Tersedia
                     </div>
                     @endforelse
                 </ol>

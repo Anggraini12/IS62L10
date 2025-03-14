@@ -50,16 +50,21 @@ Route::get('/', function () {
 // });
 
 
+Route::get('/master', function () {
+    $data_mhs = ["Abdul","Adha","Aidil","Alif","Asfal"];
+    return view('data.master',compact('data_mhs'));
+});
+
 Route::get('/mahasiswa', function () {
-    $data_mhs = ["Penti","Kania","Putri","Pece","Dini"];
-    return view('layout.mahasiswa',compact('data_mhs'));
+    $data_mhs = ["Rani","Kania","Putri","Pece","Dini"];
+    return view('data.mahasiswa',compact('data_mhs'));
 });
 
 Route::get('/dosen', function () {
     $data_dos = ["Ismanuddin","Mustofa Lutfi","Rita Warni","Ridha Ansari","Dzulgunar M Nasir"];
-    return view('layout.dosen',compact('data_dos'));
+    return view('data.dosen',compact('data_dos'));
 });
 
 Route::get('/galeri', function () {
-    return view('layout.galeri');
+    return view('data.galeri');
 });
