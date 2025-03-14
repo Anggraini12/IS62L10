@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <div class="text-center mt-3 pt-3 bg-white">
+     <div class="text-center mt-3 pt-3 bg-white">
         <h1 class="bg-dark text-white p-3 d-inline-block">{{ $nama }} </h1>
         <h1 class="bg-info text-white p-3 d-inline-block">{{ $nilai }} </h1>
 
@@ -50,6 +50,17 @@
     <div class="alert alert-secondary d-inline-block">Data Nilai Tidak Ada</div>
     @endforelse
 
+    {{-- break continue --}}
+    @forelse ($nilai2 as $val2)
+    @if ($val2 <= 50)
+    @continue
+        @endif
+    <div class="alert alert-success d-inline-block">
+        {{$val2}}
+    </div>
+    @empty
+    <div class="alert alert-secondary d-inline-block">Data Nilai Tidak Ada</div>
+    @endforelse
 
 
     </div>
@@ -59,6 +70,8 @@
         <div class="alert alert-info d-inline-block">{{ $i }}</div>
     </div>
     @endfor
+
+
 
 
     <script src="{{asset('/js/bootstrap.bundle.js')}}"></script>
