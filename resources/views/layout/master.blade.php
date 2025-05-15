@@ -21,7 +21,7 @@
                     <a class="nav-link @yield('MenuMhs')" aria-current="page" href="/mahasiswa">Mahasiswa</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @yield('MenuDos')" href="/dosen">Dosen</a>
+                    <a class="nav-link @yield('MenuDos')" href="/Dosen">Dosen</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link @yield('MenuGal')" href="/galeri">Galeri</a>
@@ -39,7 +39,7 @@
     @yield('konten')
 
     <footer class="fixed-bottom bg-dark text-white py-2 mt-4 text-center">
-        Copyright &copy; Maulian Saputra - 2025
+        Copyright &copy; Penti Anggraini - 2025
     </footer>
 
 

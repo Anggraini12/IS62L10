@@ -74,5 +74,17 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Data dosen
-Route::get('/dosen', [dosen_Controller::class, 'index']);
-Route::get('/dosen\tambah', [dosen_Controller::class, 'create']);
+// Route::get('/dosen', [dosen_Controller::class, 'index']);
+// Route::get('/dosen\tambah', [dosen_Controller::class, 'create']);
+
+Auth::routes();
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//Data Dosen
+Route::get('/dosen', [dosen_Controller::class, 'index'])->name('Dosen.index');
+// Form Tambah Data Dosen
+Route::get('/dosen/tambah', [dosen_Controller::class, 'tambah'])->name('dosens.tambah');
+// Simpan Data Dosen
+Route::post('/dosen', [dosen_Controller::class, 'store'])->name('dosens.store');

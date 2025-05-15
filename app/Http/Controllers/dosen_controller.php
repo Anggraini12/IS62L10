@@ -2,25 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dosen;
 use Illuminate\Http\Request;
 
-class dosen_controller extends Controller
+class dosen_Controller extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //Menampilkan data dosen
-        return view('Dosen.index');
+        // menampilkan data dosen
+        $dosens = Dosen::all();
+        return view('dosen.index', compact('dosens'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function tambah()
     {
-        //
+        // menampilkan form tambah
+        return view('dosen.tambah');
     }
 
     /**
@@ -28,7 +31,24 @@ class dosen_controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // proses tambah
+        // Validasi data
+        $request->validate([
+            'nidn' => 'required|unique:dosens',
+            'nama' => 'required',
+            'email' => 'required|email',
+        ]);
+
+        // // Simpan data ke database
+        Dosen::create([
+            'nidn' => $request->nidn,
+            'nama' => $request->nama,
+            'email' => $request->email,
+        ]);
+        // Simpan data ke database
+
+        // // Redirect ke halaman index dengan pesan sukses
+        return redirect()->route('Dosen.index')->with('success', 'Data dosen berhasil disimpan.');
     }
 
     /**
@@ -36,7 +56,7 @@ class dosen_controller extends Controller
      */
     public function show(string $id)
     {
-        //
+        // menampilkan data detail
     }
 
     /**
@@ -44,7 +64,7 @@ class dosen_controller extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // form edit
     }
 
     /**
@@ -52,7 +72,7 @@ class dosen_controller extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // proses edit
     }
 
     /**
@@ -60,6 +80,6 @@ class dosen_controller extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // proses hapus
     }
 }
