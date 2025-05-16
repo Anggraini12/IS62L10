@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Dosen;
 use Illuminate\Http\Request;
+use App\Models\Dosen;
 
 class dosen_Controller extends Controller
 {
@@ -33,17 +33,21 @@ class dosen_Controller extends Controller
     {
         // proses tambah
         // Validasi data
-        $request->validate([
+        $dosen = new Dosen([
             'nidn' => 'required|unique:dosens',
             'nama' => 'required',
+            'jabatan' => 'required|jabatan',
             'email' => 'required|email',
+            'No_Hp' => 'required',
         ]);
 
         // // Simpan data ke database
         Dosen::create([
             'nidn' => $request->nidn,
             'nama' => $request->nama,
+            'jabatan' => $request->jabatan,
             'email' => $request->email,
+            'No_Hp' => $request->No_Hp,
         ]);
         // Simpan data ke database
 

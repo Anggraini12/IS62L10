@@ -6,7 +6,7 @@
         <div class="col-6 m-auto">
             <div class="card">
                 <div class="card-header bg-dark-subtle">
-                    <h3 class="fw-bold text-center">{{ __('FORM TAMBAH DATA DOSEN') }}</h3>
+                    <h3 class="fw-bold text-center">{{ __('TAMBAH DATA DOSEN') }}</h3>
                 </div>
                 <div class="card-body">
                     <!-- Tampilkan Pesan Sukses -->
@@ -41,8 +41,22 @@
                         </div>
 
                         <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Jabatan</label>
+                    <select name="jabatan" class="form-control" id="">
+                        <option value="">-Pilih Jabatan-</option>
+                        <option value="Full Time">Full Time</option>
+                        <option value="Part Time">Part Time</option>
+                    </select>
+                        </div>
+
+                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" name="email" class="form-control" id="email" value="{{ old('email') }}" required>
+                        </div>
+                        
+                         <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">No Handphone</label>
+                        <input type="nohp" name="No_Hp" class="form-control" id="exampleInputPassword1">
                         </div>
 
                         <button type="submit" class="btn btn-primary w-100">Submit</button>

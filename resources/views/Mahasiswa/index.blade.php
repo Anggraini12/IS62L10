@@ -10,36 +10,30 @@
                     <span class="float-end btn btn-primary">
                         <a class="text-light" href="dosen/tambah"> <i class="fa-solid fa-user-plus"></i> Tambah </a>
                     </span>
-                    <br><br>
-                             <div class='float-end'>
-                                    <a href="" class="btn btn-warning btn-sm">detail</a>
-                                    <a href="" class="btn btn-info btn-sm">edit</a>
-                                    <a href="" class="btn btn-danger btn-sm">hapus</a>
-                             </div>
                 </div>
                 <div class="card-body">
                     <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>NIDN</th>
+                                <th>NIM</th>
                                 <th>Nama</th>
-                                <th>Jabatan</th>
-                                <th>Email</th>
-                                <th>No Hp</th>
+                                <th>Tempat Lahir</th>
+                                <th>Tanggal Lahir</th>
+                                <th>Tempat Lahir</th>
+                                <th>Dosen Id</th>
+                                <th>Jenis Kelamin</th>
+                                <th>NO HP</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($dosens as $dosen)
                             <tr>
-                                <td>{{ $dosen->id }}</td>
-                                <td>{{ $dosen->nidn }}</td>
-                                <td>{{ $dosen->nama }}</td>
-                                <td>{{ $dosen->jabatan }}</td>
-                                <td>{{ $dosen->email }}</td>
-                                <td>{{ $dosen->No_Hp }}</td>
+                                <td>{{ $mahasiswa->id }}</td>
+                                <td>{{ $mahasiswa->nim }}</td>
+                                <td>{{ $mahasiswa->nama }}</td>
+                                <td>{{ $mahasiswa->email }}</td>
                             </tr>
-
                             @endforeach
                         </tbody>
                     </table>
