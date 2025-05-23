@@ -2,45 +2,75 @@
 
 @section('content')
 <div class="container">
-    <div class="row mt-5">
-        <div class="col-8 m-auto">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
             <div class="card">
-                <div class="card-header bg-dark-subtle">
-                    <h3 class="float-start fw-bold">{{ __('DATA DOSEN') }}</h3>
-                    <span class="float-end btn btn-primary">
-                        <a class="text-light" href="dosen/tambah"> <i class="fa-solid fa-user-plus"></i> Tambah </a>
-                    </span>
-                    <br><br>
-                             <div class='float-end'>
-                                    <a href="" class="btn btn-warning btn-sm">detail</a>
-                                    <a href="" class="btn btn-info btn-sm">edit</a>
-                                    <a href="" class="btn btn-danger btn-sm">hapus</a>
-                             </div>
+                <div class="card-header">
+                    <div class="float-end"><a href="/dosen/tambah" class="btn btn-primary btn-sm"><i class="fa-solid fa-user-plus"></i> Tambah Data</a></div>
+
                 </div>
+
                 <div class="card-body">
-                    <table class="table table-striped">
+
+                    <table class="table">
                         <thead>
                             <tr>
-                                <th>No</th>
-                                <th>NIDN</th>
-                                <th>Nama</th>
-                                <th>Jabatan</th>
-                                <th>Email</th>
-                                <th>No Hp</th>
+                                <th scope="col">NO</th>
+                                <th scope="col">NIDN</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($dosens as $dosen)
-                            <tr>
-                                <td>{{ $dosen->id }}</td>
-                                <td>{{ $dosen->nidn }}</td>
-                                <td>{{ $dosen->nama }}</td>
-                                <td>{{ $dosen->jabatan }}</td>
-                                <td>{{ $dosen->email }}</td>
-                                <td>{{ $dosen->No_Hp }}</td>
-                            </tr>
+                            @forelse ( $dosen as $data)
+                                <tr>
+                                    <th scope="row">{{$nomor++}}</th>
+                                    <td>{{$data->nidn}}</td>
+                                    <td>{{$data->nama}}</td>
+                                    <td>{{$data->email}}</td>
+                                    <td>
+                                        <a href="" class="btn btn-warning btn-sm"><i class="fa-solid fa-circle-info"></i></a>
+                                        <a href="/dosen/edit/{{$data->id}}" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
 
-                            @endforeach
+
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{$data->id}}">
+                                        <i class="fa-solid fa-trash"></i>
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal{{$data->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Peringatan</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Yakin Data Dosen a.n. {{$data->nama}} ingin dihapus?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                                <form action="dosen/{{$data->id}}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                                </form>
+
+                                            </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <th colspan="5" scope="row">Data Tidak Ada</th>
+                                </tr>
+                            @endforelse
+
+
                         </tbody>
                     </table>
                 </div>

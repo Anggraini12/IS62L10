@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Dosen;
 
-class dosen_Controller extends Controller
+class dosenController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,17 +13,19 @@ class dosen_Controller extends Controller
     public function index()
     {
         // menampilkan data dosen
-        $dosens = Dosen::all();
-        return view('dosen.index', compact('dosens'));
+        $nomor = 1;
+        $dosen = Dosen::all();
+        return view('Dosen.index',compact('dosen','nomor'));
+
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function tambah()
+    public function create()
     {
         // menampilkan form tambah
-        return view('dosen.tambah');
+        return view('Dosen.tambah');
     }
 
     /**
@@ -32,27 +34,15 @@ class dosen_Controller extends Controller
     public function store(Request $request)
     {
         // proses tambah
-        // Validasi data
-        $dosen = new Dosen([
-            'nidn' => 'required|unique:dosens',
-            'nama' => 'required',
-            'jabatan' => 'required|jabatan',
-            'email' => 'required|email',
-            'No_Hp' => 'required',
-        ]);
+        $dosen = new Dosen;
+        $dosen->nidn = $request->nidn;
+        $dosen->nama = $request->nama;
+        $dosen->email = $request->email;
+        $dosen->rumpun = $request->rumpun;
+        $dosen->nohp = $request->nohp;
+        $dosen->save();
 
-        // // Simpan data ke database
-        Dosen::create([
-            'nidn' => $request->nidn,
-            'nama' => $request->nama,
-            'jabatan' => $request->jabatan,
-            'email' => $request->email,
-            'No_Hp' => $request->No_Hp,
-        ]);
-        // Simpan data ke database
-
-        // // Redirect ke halaman index dengan pesan sukses
-        return redirect()->route('Dosen.index')->with('success', 'Data dosen berhasil disimpan.');
+        return redirect('/dosen');
     }
 
     /**
@@ -69,6 +59,8 @@ class dosen_Controller extends Controller
     public function edit(string $id)
     {
         // form edit
+        $dosen = Dosen::find($id);
+        return view('Dosen.edit',compact('dosen'));
     }
 
     /**
@@ -77,6 +69,16 @@ class dosen_Controller extends Controller
     public function update(Request $request, string $id)
     {
         // proses edit
+
+        $dosen = Dosen::find($id);
+        $dosen->nidn = $request->nidn;
+        $dosen->nama = $request->nama;
+        $dosen->email = $request->email;
+        $dosen->rumpun = $request->rumpun;
+        $dosen->nohp = $request->nohp;
+        $dosen->save();
+
+        return redirect('/dosen');
     }
 
     /**
@@ -85,5 +87,9 @@ class dosen_Controller extends Controller
     public function destroy(string $id)
     {
         // proses hapus
+         $dosen = Dosen::find($id);
+        $dosen->delete();
+
+        return redirect('/dosen');
     }
 }

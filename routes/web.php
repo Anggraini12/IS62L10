@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\http\Controllers\dosen_Controller;
+use App\http\Controllers\dosenController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -70,22 +70,35 @@ Route::get('/', function () {
 // Route::get('/galeri', function () {
 //     return view('data.galeri');
 // });
+// Auth::routes();
+
+// Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// //Data dosen
+// // Route::get('/dosen', [dosen_Controller::class, 'index']);
+// // Route::get('/dosen\tambah', [dosen_Controller::class, 'create']);
+
+// Auth::routes();
+
+// Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// //Data Dosen
+// Route::get('/dosen', [dosen_Controller::class, 'index'])->name('Dosen.index');
+// // Form Tambah Data Dosen
+// Route::get('/dosen/tambah', [dosen_Controller::class, 'tambah'])->name('dosens.tambah');
+// // Simpan Data Dosen
+// Route::post('/dosen', [dosen_Controller::class, 'store'])->name('dosens.store');
+
+
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-//Data dosen
-// Route::get('/dosen', [dosen_Controller::class, 'index']);
-// Route::get('/dosen\tambah', [dosen_Controller::class, 'create']);
-
-Auth::routes();
-
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 
 //Data Dosen
-Route::get('/dosen', [dosen_Controller::class, 'index'])->name('Dosen.index');
-// Form Tambah Data Dosen
-Route::get('/dosen/tambah', [dosen_Controller::class, 'tambah'])->name('dosens.tambah');
-// Simpan Data Dosen
-Route::post('/dosen', [dosen_Controller::class, 'store'])->name('dosens.store');
+Route::get('/dosen', [dosenController::class, 'index']);
+Route::get('/dosen/tambah', [dosenController::class, 'create']);
+Route::post('/dosen', [dosenController::class, 'store']);
+Route::get('/dosen/edit/{id}', [dosenController::class, 'edit']);
+Route::put('/dosen/{id}', [dosenController::class, 'update']);
+Route::delete('/dosen/{id}', [dosenController::class, 'destroy']);

@@ -12,7 +12,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{asset('css/all.css')}}">
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -31,11 +31,11 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/mahasiswa" >Data Mahasiswa</a>
+                            <a class="nav-link" href="/mahasiswa">Data Mahasiswa</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/dosen" >Data Dosen</a>
+                            <a class="nav-link" href="/dosen">Data Dosen</a>
                         </li>
                     </ul>
 
@@ -82,5 +82,7 @@
             @yield('content')
         </main>
     </div>
+
+    <script src="{{asset('js/all.js')}}"></script>
 </body>
 </html>
